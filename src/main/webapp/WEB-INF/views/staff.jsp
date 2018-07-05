@@ -134,11 +134,6 @@
 								<td>Address 1</td>
 								<td><input type="checkbox" name="name7" /></td>
 							</tr>
-							<tr class="odd gradeX">
-
-								<td>Adress 2</td>
-								<td><input type="checkbox" name="name8" /></td>
-							</tr>
 
 
 						</tbody>

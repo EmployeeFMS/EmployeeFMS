@@ -12,7 +12,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	
+
 <script src="<spring:url value="/resources/js/style.js"/>"></script>
 
 <title>FileManagementSystem</title>
@@ -20,7 +20,7 @@
 </head>
 <body>
 	<jsp:include page="../views/header.jsp"></jsp:include>
-<div>
+	<div>
 		<div class="row">
 			<div class="col-sm-3">
 				<div id="side" class="side">
@@ -38,11 +38,11 @@
 
 
 			<div class="col-sm-8">
-			
-			     <div id="hide6">
+
+				<div id="hide6">
 					<h3>Employee Home</h3>
 				</div>
-				
+
 				<div hidden id="hide7">
 					<h3>Fill the form</h3>
 					<br>
@@ -83,12 +83,7 @@
 									<label>Age:</label> <input type="text" class="form-control">
 								</div>
 								<div class="form-group">
-									<label>Address 1:</label> <input type="text"
-										class="form-control">
-								</div>
-								<div class="form-group">
-									<label>Address 2:</label> <input type="text"
-										class="form-control">
+									<label>Address:</label> <input type="text" class="form-control">
 								</div>
 							</div>
 						</div>
@@ -140,23 +135,20 @@
 									<label>Age:</label> <input type="text" class="form-control">
 								</div>
 								<div class="form-group">
-									<label>Address 1:</label> <input type="text"
-										class="form-control">
+									<label>Address:</label> <input type="text" class="form-control">
 								</div>
-								<div class="form-group">
-									<label>Address 2:</label> <input type="text"
-										class="form-control">
-								</div>
+
 							</div>
+							<div class="right">
+									<button class="btn btn-success">Save</button>
+								</div>
 						</div>
 
-						<div class="right">
-							<button class="btn btn-success">Save</button>
-						</div>
+
 					</form>
 				</div>
 
-                <div hidden id="hide9">
+				<div hidden id="hide9">
 					<h3>Write your comment</h3>
 					<div class="form-group right">
 						<textarea rows="6" cols="100" class="form-control"></textarea>

@@ -19,8 +19,9 @@
 <body>
 <jsp:include page="../views/header.jsp"></jsp:include>
 
-<div class="container">
-		<h3>This is Egerton's file management system</h3>
+<div class="container text-center">
+		<h2><strong>Egerton University</strong></h2>
+		<h3>Employee File Management System</h3>
 	</div>
 </body>
 </html>

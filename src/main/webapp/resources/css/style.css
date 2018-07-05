@@ -22,6 +22,11 @@ body,html{
 .right{
 	text-align:right;
 }
+.right-bottom{
+	position:absolute;
+	bottom:0;
+	right:0;
+}
 
 .side{
 	float: left;
@@ -30,6 +35,7 @@ body,html{
 	background:	#D3D3D3;
 	overflow: hidden;
 	left: -200px;
+	
 }
 .side.active{
 	left: 0px;
@@ -43,7 +49,9 @@ body,html{
 	list-style: none;
 	padding: 15px 10px;
 	border-bottom: 1px solid rgba(100, 100,100, 0.3);
+	
 }
+
 /*.sidebar ul li a{
 	text-decoration: none;
 	color: white;
