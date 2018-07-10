@@ -80,5 +80,36 @@ $(function(){
 		$("#side").classlist.toggle("active");
 		
 	});
+	
+	$("#submitEmp").on("click",function(e){
+		e.preventDefault();	
+		$("#param").empty();
+		console.log("inside");
+		$.post("/FileManagement/registerEmployee",$("form").serialize(),function(data){
+			$("#registerForm")[0].reset();
+			document.getElementById("param").innerHTML = data;
+			console.log("am back");
+		});
+	});
+	
+	$("#deptData").on("click",function(e){
+		e.preventDefault();
+		$.post("/FileManagement/limitAccess",$("form").serialize(),function(data){
+			$("#limitForm")[0].reset();
+			document.getElementById("limitResponse").innerHTML=data;
+		});
+	});
+	
+	$("#archiveSearch").on("click",function(e){
+		e.preventDefault();
+		$("#archiveDiv").hide();
+		console.log("inside archive");
+		$.post("/FileManagement/archiveSearch",$("form").serialize(),function(data){
+			console.log("back");
+			$("#archiveForm")[0].reset();
+			document.getElementById("archiveResponse").innerHTML=data;
+			$("#archiveDiv").show();
+		});
+	})
 });
 
