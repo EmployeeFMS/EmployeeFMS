@@ -179,13 +179,18 @@
 					<form class="input-group" method="post" id="archiveForm">
 						<input type="text" class="form-control" placeholder="payroll" name="payroll">
 						<div class="input-group-btn">
-							<button type="button" class="btn btn-success" id="archiveSearch">Search</button>
+							<button type="button" class="btn btn-success" id="archiveFind">Search</button>
 						</div>
 					</form>
+					<br>
+					<h5 style="color:red" id="archiveRespo"></h5>
 					
 					<div hidden id="archiveDiv">
-					<h4 id="archiveResponse"></h4>
-					<button class="btn btn-success" id="archiveBtn"></button>
+					<p hidden id="archiveResponse"></p>
+					<h5 id="archiveResponse1"></h5>
+					<h5 id="archiveResponse2"></h5>
+					<h5 id="archiveResponse3"></h5>
+					<button class="btn btn-success" id="archiveBtn">Archive</button>
 					</div>
 					
 				</div>

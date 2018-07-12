@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -69,19 +70,24 @@ public class Home {
 		}
 		return "Data for "+department+" has been limited";
 		
+		
 	}
 	
 	@RequestMapping(value="/archiveSearch", method=RequestMethod.POST)
 	@ResponseBody
-	public String archiveSearch(@ModelAttribute Payroll entered) {
+	public Employee archiveSearch(@ModelAttribute Payroll entered) {
 		int enteredPayroll = entered.getPayroll();
 		System.out.println(enteredPayroll);
 		Employee employee = empRepo.findByPayrollEquals(enteredPayroll);
-		int payroll = employee.getPayroll();
-		String firstName = employee.getFirstName();
-		String lastName = employee.getLastName();
-		String department = employee.getDepartment();
 		
-		return "PAYROLL: "+payroll+"\n NAME: "+firstName+" "+lastName+"\n DEPARTMENT: "+department;
+		System.out.println(employee);
+		
+		return employee;
+	}
+	@RequestMapping("/archiveEmployee/{payroll}")
+	@ResponseBody
+	public String archiveEmp(@PathVariable("payroll") int payroll) {
+		System.out.println(payroll);
+		return "Archive successful";
 	}
 }

@@ -85,7 +85,7 @@ $(function(){
 		e.preventDefault();	
 		$("#param").empty();
 		console.log("inside");
-		$.post("/FileManagement/registerEmployee",$("form").serialize(),function(data){
+		$.post("/FileManagement/registerEmployee",$("#registerForm").serialize(),function(data){
 			$("#registerForm")[0].reset();
 			document.getElementById("param").innerHTML = data;
 			console.log("am back");
@@ -94,22 +94,37 @@ $(function(){
 	
 	$("#deptData").on("click",function(e){
 		e.preventDefault();
-		$.post("/FileManagement/limitAccess",$("form").serialize(),function(data){
+		$.post("/FileManagement/limitAccess",$("#limitForm").serialize(),function(data){
 			$("#limitForm")[0].reset();
 			document.getElementById("limitResponse").innerHTML=data;
 		});
 	});
 	
-	$("#archiveSearch").on("click",function(e){
+	
+	$("#archiveFind").on("click",function(e){
 		e.preventDefault();
 		$("#archiveDiv").hide();
 		console.log("inside archive");
-		$.post("/FileManagement/archiveSearch",$("form").serialize(),function(data){
+		$.post("/FileManagement/archiveSearch",$("#archiveForm").serialize(),function(data){
 			console.log("back");
 			$("#archiveForm")[0].reset();
-			document.getElementById("archiveResponse").innerHTML=data;
+			document.getElementById("archiveResponse").innerHTML=data.payroll;
+			document.getElementById("archiveResponse1").innerHTML="<strong>PAYROLL : </strong>"+data.payroll;
+			document.getElementById("archiveResponse2").innerHTML="<strong>NAME : </strong>"+data.firstName+" "+data.lastName;
+			document.getElementById("archiveResponse3").innerHTML="<strong>DEPARTMENT : </strong>"+data.department;
 			$("#archiveDiv").show();
 		});
 	})
+	
+	$("#archiveBtn").on("click",function(e){
+		e.preventDefault();
+		var text = $("#archiveResponse").text();
+		
+		$.post("/FileManagement/archiveEmployee/"+text,function(data){
+			$("#archiveDiv").hide();
+			document.getElementById("archiveRespo").innerHTML=data;
+		});
+		
+	});
 });
 
