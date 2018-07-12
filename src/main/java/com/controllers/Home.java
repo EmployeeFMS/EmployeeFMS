@@ -90,4 +90,11 @@ public class Home {
 		System.out.println(payroll);
 		return "Archive successful";
 	}
+	
+	@RequestMapping(value="/fillForm",method=RequestMethod.POST)
+	@ResponseBody
+	public String fillForm(@ModelAttribute Employee employee) {
+		System.out.println(employee);
+		return "Registration successful";
+	}
 }

@@ -126,5 +126,15 @@ $(function(){
 		});
 		
 	});
+	
+	$("#formButton").on("click",function(e){
+		e.preventDefault();
+		console.log("inside");
+		$.post("/FileManagement/fillForm",$("#empForm").serialize(),function(data){
+			$("#empForm")[0].reset();
+			console.log(data);
+			document.getElementById("fillFormResponse").innerHTML=data;
+		});
+	});
 });
 

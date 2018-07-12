@@ -76,7 +76,7 @@
 							<div class="col-sm-8 right">
 								<a href="#" id="submitEmp" class="btn btn-success">Register</a>
 								<br>
-								<p id="param" style="color: red"></p>
+								<p id="param" style="color: green"></p>
 							</div>
 						</div>
 					</form>
@@ -159,7 +159,7 @@
 					<div class="right">
 						<button class="btn btn-success" id="deptData">Limit access</button>
 					</div>
-					<p style="color:red" id="limitResponse"></p>
+					<p style="color:green" id="limitResponse"></p>
 				</div>
 
 
@@ -183,7 +183,7 @@
 						</div>
 					</form>
 					<br>
-					<h5 style="color:red" id="archiveRespo"></h5>
+					<h5 style="color:green" id="archiveRespo"></h5>
 					
 					<div hidden id="archiveDiv">
 					<p hidden id="archiveResponse"></p>
