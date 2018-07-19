@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.data.DepartmentData;
 import com.data.EmpRepo;
+import com.data.EmpRole;
 import com.data.Employee;
 import com.data.LimitedData;
 import com.data.LimitedRepo;
@@ -50,6 +51,7 @@ public class Home {
 	@ResponseBody
 	public String registerEmp(@ModelAttribute Employee employee) {
 		System.out.println(employee);
+		employee.setRole("ROLE_EMPLOYEE");
 		empRepo.save(employee);
 		return "Register was successful";
 	}
@@ -76,7 +78,7 @@ public class Home {
 	@RequestMapping(value="/archiveSearch", method=RequestMethod.POST)
 	@ResponseBody
 	public Employee archiveSearch(@ModelAttribute Payroll entered) {
-		int enteredPayroll = entered.getPayroll();
+		String enteredPayroll = entered.getPayroll();
 		System.out.println(enteredPayroll);
 		Employee employee = empRepo.findByPayrollEquals(enteredPayroll);
 		
@@ -96,5 +98,23 @@ public class Home {
 	public String fillForm(@ModelAttribute Employee employee) {
 		System.out.println(employee);
 		return "Registration successful";
+	}
+	@RequestMapping("/updateForm")
+	@ResponseBody
+	public String updateForm(@ModelAttribute Employee employee) {
+		return "Update successful";
+	}
+	@RequestMapping("/changeRole")
+	@ResponseBody
+	public String changeRole(@ModelAttribute  EmpRole role) {
+		Employee employee = empRepo.findByPayrollEquals(role.getPayroll());
+		employee.setRole(role.getRole());
+		empRepo.save(employee);
+		return "Role changed";
+	}
+	
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String login() {
+		return "login";
 	}
 }

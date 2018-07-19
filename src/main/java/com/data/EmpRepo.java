@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmpRepo extends JpaRepository<Employee, Integer> {
 
-	public Employee findByPayrollEquals(int payroll);
+	public Employee findByPayrollEquals(String payroll);
 }

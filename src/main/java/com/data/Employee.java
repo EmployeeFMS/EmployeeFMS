@@ -46,8 +46,20 @@ public class Employee {
 	private String password;
 
 	@Column(name="Payroll")
-	private int payroll;
+	private String payroll;
 	
+	@Column(name="Role")
+	private String role;
+	
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -136,11 +148,11 @@ public class Employee {
 		this.password = password;
 	}
 
-	public int getPayroll() {
+	public String getPayroll() {
 		return payroll;
 	}
 
-	public void setPayroll(int payroll) {
+	public void setPayroll(String payroll) {
 		this.payroll = payroll;
 	}
 

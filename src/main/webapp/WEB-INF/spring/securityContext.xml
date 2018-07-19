@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+<context:component-scan base-package="com.security"/>
+      
+         
+	  <security:http auto-config="true" use-expressions="false">
+	   <security:form-login login-page="/login" login-processing-url="/login" username-parameter="customUsername" 
+	   password-parameter="customPassword"/>
+	    
+	 	<!-- <security:intercept-url pattern="/staff"
+			access="ROLE_STAFF" />    -->
+		<security:intercept-url pattern="/employee"
+			access="ROLE_EMPLOYEE,ROLE_STAFF,ROLE_DEPARTMENT" />
+		<security:intercept-url pattern="/department"
+			access="ROLE_DEPARTMENT" />
+			
+	</security:http>
+	
+	<security:authentication-manager>
+       <security:authentication-provider user-service-ref="customUserDetailsService">
+       </security:authentication-provider>
+      </security:authentication-manager>
+
+       
+
+</beans>

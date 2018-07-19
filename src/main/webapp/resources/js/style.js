@@ -5,7 +5,9 @@ $(function(){
 		$("#hide3").hide();
 		$("#hide4").hide();
 		$("#hide5").hide();
+		$("#hideRole").hide();
 		$("#hide1").show();
+		
 	});
 	
 	$("#registerJs").on("click",function(e){
@@ -14,6 +16,7 @@ $(function(){
 		$("#hide3").hide();
 		$("#hide4").hide();
 		$("#hide5").hide();
+		$("#hideRole").hide();
 		$("#hide2").show();
 	});
 	
@@ -23,6 +26,7 @@ $(function(){
 		$("#hide2").hide();
 		$("#hide4").hide();
 		$("#hide5").hide();
+		$("#hideRole").hide();
 		$("#hide3").show();
 	});
 	
@@ -32,6 +36,7 @@ $(function(){
 		$("#hide2").hide();
 		$("#hide3").hide();
 		$("#hide5").hide();
+		$("#hideRole").hide();
 		$("#hide4").show();
 	});
 	
@@ -41,8 +46,19 @@ $(function(){
 		$("#hide2").hide();
 		$("#hide3").hide();
 		$("#hide4").hide();
+		$("#hideRole").hide();
 		$("#hide5").show();
 	});
+	$("#roleJs").on("click",function(e){
+		e.preventDefault();
+		$("#hide1").hide();
+		$("#hide2").hide();
+		$("#hide3").hide();
+		$("#hide4").hide();
+		$("#hide5").hide();
+		$("#hideRole").show();
+	});
+	
 	
 	$("#empJs").on("click",function(e){
 		e.preventDefault();
@@ -134,6 +150,20 @@ $(function(){
 			$("#empForm")[0].reset();
 			console.log(data);
 			document.getElementById("fillFormResponse").innerHTML=data;
+		});
+	});
+	$("#updateButton").on("click",function(e){
+		e.preventDefault();
+		$.post("/FileManagement/updateForm",$("#updateForm").serialize(),function(data){
+			$("#updateForm")[0].reset();
+			document.getElementById("updateFormResponse").innerHTML=data;
+		});
+	});
+	$("#roleButton").on("click",function(e){
+		e.preventDefault();
+		$.post("/FileManagement/changeRole",$("#roleForm").serialize(),function(data){
+			$("#roleForm")[0].reset();
+			document.getElementById("roleFormResponse").innerHTML=data;
 		});
 	});
 });

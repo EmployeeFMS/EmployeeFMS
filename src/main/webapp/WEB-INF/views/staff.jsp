@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,7 +16,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="<spring:url value="/resources/js/style.js"/>"></script>
 
-<title>FileManagementSystem</title>
 <title>FileManagementSystem</title>
 </head>
 <body>
@@ -35,6 +35,8 @@
 							class="glyphicons glyphicons-refresh"></span>Request Update</li>
 						<li id="archiveJs" href="#"><span
 							class="glyphicons glyphicons-cloud"></span>Add to Archive</li>
+						<li id="roleJs" href="#"><span
+							class="glyphicons glyphicons-cloud"></span>Change Role</li>
 					</ul>
 				</div>
 				<div class="toggle-btn">
@@ -74,6 +76,7 @@
 						<div class="form-group">
 							<div class="col-sm-2"></div>
 							<div class="col-sm-8 right">
+							<sec:csrfInput/>
 								<a href="#" id="submitEmp" class="btn btn-success">Register</a>
 								<br>
 								<p id="param" style="color: green"></p>
@@ -84,7 +87,7 @@
 				</div>
 
 				<div hidden id="hide3">
-				
+
 					<!-- 	<div class="dropdown">
 						<button class="btn btn-primary dropdown-toggle" type="button"
 							data-toggle="dropdown">
@@ -98,68 +101,73 @@
 					</div>   -->
 					<br>
 					<form method="post" id="limitForm">
-					<select class="form-control" name="department">
-					    <option disabled selected hidden>Select Department</option>
-					    <option value="Computer Science">Computer Science</option>
-						<option value="Maths">Maths</option>
-						<option value="Human Nutrition">Human Nutrition</option>
-					</select> <br>
-					
-					<table id="data-table"
-						class="table table-striped table-bordered nowrap" width="100%">
-						<thead>
-							<tr>
+						<select class="form-control" name="department">
+							<option disabled selected hidden>Select Department</option>s
+							<option value="Computer Science">Computer Science</option>
+							<option value="Maths">Maths</option>
+							<option value="Human Nutrition">Human Nutrition</option>
+						</select> <br>
 
-								<th>Details</th>
+						<table id="data-table"
+							class="table table-striped table-bordered nowrap" width="100%">
+							<thead>
+								<tr>
 
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="odd gradeX">
+									<th>Details</th>
 
-								<td>Name</td>
-								<td><input type="checkbox" name="name" value="Name"/></td>
-							</tr>
-							<tr class="odd gradeX">
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="odd gradeX">
 
-								<td>Phone Number</td>
-								<td><input type="checkbox" name="number" value="Phone Number"/></td>
-							</tr>
-							<tr class="odd gradeX">
+									<td>Name</td>
+									<td><input type="checkbox" name="name" value="Name" /></td>
+								</tr>
+								<tr class="odd gradeX">
 
-								<td>Email</td>
-								<td><input type="checkbox" name="email" value="Email"/></td>
-							</tr>
-							<tr class="odd gradeX">
+									<td>Phone Number</td>
+									<td><input type="checkbox" name="number"
+										value="Phone Number" /></td>
+								</tr>
+								<tr class="odd gradeX">
 
-								<td>Marital Status</td>
-								<td><input type="checkbox" name="maritalStatus" value="Marital Status"/></td>
-							</tr>
-							<tr class="odd gradeX">
+									<td>Email</td>
+									<td><input type="checkbox" name="email" value="Email" /></td>
+								</tr>
+								<tr class="odd gradeX">
 
-								<td>Gender</td>
-								<td><input type="checkbox" name="gender" value="Gender"/></td>
-							</tr>
-							<tr class="odd gradeX">
+									<td>Marital Status</td>
+									<td><input type="checkbox" name="maritalStatus"
+										value="Marital Status" /></td>
+								</tr>
+								<tr class="odd gradeX">
 
-								<td>Age</td>
-								<td><input type="checkbox" name="age" value="Age"/></td>
-							</tr>
-							<tr class="odd gradeX">
+									<td>Gender</td>
+									<td><input type="checkbox" name="gender" value="Gender" /></td>
+								</tr>
+								<tr class="odd gradeX">
 
-								<td>Address</td>
-								<td><input type="checkbox" name="address" value="Address"/></td>
-							</tr>
+									<td>Age</td>
+									<td><input type="checkbox" name="age" value="Age" /></td>
+								</tr>
+								<tr class="odd gradeX">
+
+									<td>Address</td>
+									<td><input type="checkbox" name="address" value="Address" /></td>
+								</tr>
 
 
-						</tbody>
+							</tbody>
 
-					</table>
+						</table>
+						<sec:csrfInput/>
 					</form>
 					<div class="right">
-						<button class="btn btn-success" id="deptData">Limit access</button>
+					
+						<button class="btn btn-success" id="deptData">Limit
+							access</button>
 					</div>
-					<p style="color:green" id="limitResponse"></p>
+					<p style="color: green" id="limitResponse"></p>
 				</div>
 
 
@@ -175,24 +183,45 @@
 
 				<div hidden id="hide5">
 					<h3>Enter payroll number to archive</h3>
-					
+
 					<form class="input-group" method="post" id="archiveForm">
-						<input type="text" class="form-control" placeholder="payroll" name="payroll">
+						<input type="text" class="form-control" placeholder="payroll"
+							name="payroll">
 						<div class="input-group-btn">
+						<sec:csrfInput/>
 							<button type="button" class="btn btn-success" id="archiveFind">Search</button>
 						</div>
 					</form>
 					<br>
-					<h5 style="color:green" id="archiveRespo"></h5>
-					
+					<h5 style="color: green" id="archiveRespo"></h5>
+
 					<div hidden id="archiveDiv">
-					<p hidden id="archiveResponse"></p>
-					<h5 id="archiveResponse1"></h5>
-					<h5 id="archiveResponse2"></h5>
-					<h5 id="archiveResponse3"></h5>
-					<button class="btn btn-success" id="archiveBtn">Archive</button>
+						<p hidden id="archiveResponse"></p>
+						<h5 id="archiveResponse1"></h5>
+						<h5 id="archiveResponse2"></h5>
+						<h5 id="archiveResponse3"></h5>
+						<button class="btn btn-success" id="archiveBtn">Archive</button>
 					</div>
-					
+
+				</div>
+
+				<div hidden id="hideRole">
+					<h3>Change Employee Role</h3>
+					<form id="roleForm">
+					<div class="form-group">
+						<label>Payroll</label> <input type="text" name="payroll"
+							class="form-control">
+					</div>
+					<div class="form-group">
+						<label>Role</label> <select name="role" class="form-control">
+							<option>ROLE_EMPLOYEE</option>
+							<option>ROLE_DEPARTMENT</option>
+						</select>
+					</div>
+					<sec:csrfInput/>
+					<button class="btn btn-success" id="roleButton">Change</button>
+					</form>
+					<h5 id="roleFormResponse" style="color:green"></h5>
 				</div>
 
 
